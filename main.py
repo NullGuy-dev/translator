@@ -63,7 +63,7 @@ model = Sequential([
     Dense(eng_vok_s, activation='softmax')
 ])
 
-model_file_name = "model_eng_rus.h1.fv_28_23" # name for trained model's file
+model_file_name = "model_eng_rus.h1.fv_25_23" # name for trained model's file
 
 model.compile(optimizer=RMSprop(learning_rate=0.001), loss='sparse_categorical_crossentropy', metrics=['accuracy']) # compiling model by good options
 model.fit(trainX, trainY.reshape(trainY.shape[0], trainY.shape[1], 1), epochs=150, batch_size=512, validation_split=0.15, verbose=1) # training model by 150 epochs. And I putted 15% of training data for validation
@@ -72,7 +72,7 @@ model.save(model_file_name) # saving model with .h1 type
 # model = load_model(model_file_name) # if you need this
 
 def translate_text(model, text, in_tok, in_len, out_tok): # function for using model
-    seq = get_out_of_tok([text], in_tok, in_len) # getting seq of input text
+    seq = get_out_of_tok(in_tok, in_len, [text]) # getting seq of input text
     pred_seq = model.predict(seq) # model exploitation with seq
     res = ''
     for ti in np.argmax(pred_seq, axis=-1)[0]: # checking input text
