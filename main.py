@@ -1,3 +1,6 @@
+# !!! WARNING !!! WARNING !!! WARNING !!!
+# open LINKS TO THE DATASET AND TRAINED MODEL file, and download dataset and model there
+
 # importing our lib's and frameworks
 import string
 import numpy as np
